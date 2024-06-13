@@ -1,6 +1,6 @@
 # Zebra-FX_Get_Temperature Information and Its Warning Events
 
-#### FXシリーズ内の温度を取得する。
+#### FXシリーズ内部の温度を確認、温度アラートを検知する。
 
 ---
 
