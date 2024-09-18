@@ -21,12 +21,12 @@
 
    ![1718267163207](image/README/1718267163207.png)
 
-   | Event                           | Defenition                                                                   |
-   | ------------------------------- | ---------------------------------------------------------------------------- |
-   | AmbientTemperatureHighAlarm     | Displays the number of events raised for ambient temperature high alarm.     |
-   | AmbientTemperatureCriticalAlarm | Displays the number of events raised for ambient temperature critical alarm. |
-   | PATemperatureHighAlarm          | Displays the number of events raised for PA temperature high alarm.          |
-   | PATemperatureCriticalAlarm      | Displays the number of events raised for PA temperature critical alarm.      |
+   | Event                           | Defenition                                                                   | Threshold (Celsius)<br />FX9600 | Threshold (Celsius)<br />FX7500 |
+   | ------------------------------- | ---------------------------------------------------------------------------- | ------------------------------- | ------------------------------- |
+   | AmbientTemperatureHighAlarm     | Displays the number of events raised for ambient temperature high alarm.     | 127                             | 75                              |
+   | AmbientTemperatureCriticalAlarm | Displays the number of events raised for ambient temperature critical alarm. | 127                             | 85                              |
+   | PATemperatureHighAlarm          | Displays the number of events raised for PA temperature high alarm.          | 127                             | 105                             |
+   | PATemperatureCriticalAlarm      | Displays the number of events raised for PA temperature critical alarm.      | 127                             | 125                             |
 
    </br>
 
@@ -47,3 +47,26 @@
    - /var/log/messages
    - Syslog サーバにてSystem Logを受信
    - API経由でEventを収集
+
+
+   </br>
+
+   #### API経由で取得について
+
+   APIは下記の様にアラートデータを出力する。
+
+   ##### API Format
+
+   ```
+   private TEMPERATURE_SOURCE m_sourceName;  {can be PA or Ambient}
+   private ushort m_currentTemperature; {Temperature in deg Celsius}
+   private ALARM_LEVEL m_AlarmLevel; {Low, High or Critical}
+   ```
+
+   ##### 例、情報取得(PA High Alert)
+   ```
+   Status Notification: TEMPERATURE_ALARM_EVENT
+   Source: PA
+   Temperature: 53
+   Alarm Level: HIGH
+   ```
